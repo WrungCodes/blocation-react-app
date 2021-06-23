@@ -3,7 +3,6 @@ import Web3 from 'web3';
 import Blocation from './Blocation.json'
 import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip, useMap } from 'react-leaflet'
-require('dotenv').config()
 
 function ChangeView({ center, zoom }) {
   const map = useMap();
@@ -36,11 +35,11 @@ function App() {
     const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545')
 
     // const network = await web3.eth.net.getNetworkType()
-    // const networkID = await web3.eth.net.getId()
-    // const networkData = Blocation.networks[networkID]
+    const networkID = await web3.eth.net.getId()
+    const networkData = Blocation.networks[networkID]
 
     const abi = Blocation.abi
-    const contract_address = process.env.CONTRACT_ADDRESS
+    const contract_address = networkData.address
 
     const accounts = await window.ethereum.send('eth_requestAccounts');
     setAddress(accounts.result[0]);
