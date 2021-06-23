@@ -36,8 +36,8 @@ function App() {
     const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545')
 
     // const network = await web3.eth.net.getNetworkType()
-    const networkID = await web3.eth.net.getId()
-    const networkData = Blocation.networks[networkID]
+    // const networkID = await web3.eth.net.getId()
+    // const networkData = Blocation.networks[networkID]
 
     const abi = Blocation.abi
     const contract_address = process.env.CONTRACT_ADDRESS
