@@ -1,4 +1,5 @@
 // import logo from './logo.svg';
+require('dotenv').config()
 import './App.css';
 import Web3 from 'web3';
 import React, { useState, useEffect, useRef } from 'react';
@@ -52,7 +53,7 @@ function App() {
     const networkData = Blocation.networks[networkID]
 
     const abi = Blocation.abi
-    const contract_address = networkData.address
+    const contract_address = process.env.CONTRACT_ADDRESS
 
     const accounts = await window.ethereum.send('eth_requestAccounts');
     setAddress(accounts.result[0]);
