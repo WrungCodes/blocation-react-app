@@ -1,22 +1,9 @@
-// import logo from './logo.svg';
-require('dotenv').config()
 import './App.css';
 import Web3 from 'web3';
-import React, { useState, useEffect, useRef } from 'react';
 import Blocation from './Blocation.json'
+import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip, useMap } from 'react-leaflet'
-// import L from 'leaflet';
-// const iconPerson = new L.Icon({
-//     iconUrl: require('./location-icon-png-4239.png').default,
-//     iconRetinaUrl: require('./location-icon-png-4239.png').default,
-//     iconAnchor: null,
-//     popupAnchor: null,
-//     shadowUrl: null,
-//     shadowSize: null,
-//     shadowAnchor: null,
-//     iconSize: new L.Point(60, 75),
-//     className: 'leaflet-div-icon'
-// });
+require('dotenv').config()
 
 function ChangeView({ center, zoom }) {
   const map = useMap();
