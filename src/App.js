@@ -3,6 +3,7 @@ import Web3 from 'web3';
 import Blocation from './Blocation.json'
 import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip, useMap } from 'react-leaflet'
+import ReactLeafletGoogleLayer from "react-leaflet-google-layer";
 
 function ChangeView({ center, zoom }) {
   const map = useMap();
@@ -30,6 +31,9 @@ function App() {
 
   const inputRef = useRef();
   const mapRef = useRef();
+
+  const terrain = "TERRAIN";
+  const key = "AIzaSyC0QH9aiCXuuRjJe4k5lzAM2bYl-MUhiPk";
 
   const loadBlockchainData = async () => {
     const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545')
@@ -224,10 +228,11 @@ function App() {
           isLoading | isLocationLoading ? 'Loading' :
             <MapContainer refs={mapRef} center={center} zoom={25} scrollWheelZoom={false} >
               <ChangeView center={center} zoom={25} />
-              <TileLayer
+              {/* <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
+              /> */}
+              <ReactLeafletGoogleLayer apiKey={key} type={'satellite'} />
               <Marker key={0} position={[latitude, longitude]}>
                 <Tooltip permanent>
                   <span>Current Location</span>
